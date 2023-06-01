@@ -1,0 +1,32 @@
+#version: "1.0.0"
+services:
+  nginx:
+    image: nginx
+    container_name: time-ng
+    ports:
+      - "9900:8080"
+    volumes:
+      - /home/project/time/time-ng/config:/etc/nginx/
+      - /home/project/time/time-ng/log:/var/log/nginx/
+      - /home/project/time/time-web/:/data/time/
+    networks:
+      - time-app_net
+    depends_on:
+      - time-app
+
+  time-app:
+    image: openjdk:17
+    container_name: time-app
+    environment:
+      JAVA_HOME: '/usr/java/openjdk-17'
+      JAVA_VERSION: '17.0.2'
+    volumes:
+      - /home/project/time/time-server/:/data/
+      #- /home/project/time/logs/uTimeLog.txt:/var/log/uTimeLog.txt
+    entrypoint: java -Djava.security.egd=file:/dev/./urandom -jar /data/app.jar
+    networks:
+      - time-app_net
+
+networks:
+  time-app_net:
+    driver: bridge
