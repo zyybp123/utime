@@ -1,2 +1,0 @@
-2023-06-01T10:21:34.109+08:00  INFO 27976 --- [main] com.bpz.utime.UtimeApplication           : Starting UtimeApplication using Java 17.0.7 with PID 27976 (F:\ZYY\JEE\demo002\utime\build\classes\java\main started by bpzzr in F:\ZYY\JEE\demo002\utime)
-2023-06-01T10:21:34.127+08:00  INFO 27976 --- [main] com.bpz.utime.UtimeApplication           : No active profile set, falling back to 1 default profile: "default"
